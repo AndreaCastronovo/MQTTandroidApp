@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_scan"
+        android:title="@string/toolbar_main_scan"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_stopScan"
+        android:title="@string/toolbar_main_stopScan"
+        app:showAsAction="always"
+        android:visible="false"/>
+
+    <item android:id="@+id/action_adapter_info"
+        android:title="@string/toolbar_main_adapter_info"
+        app:showAsAction="never" />
+</menu>
