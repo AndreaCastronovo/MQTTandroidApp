@@ -36,18 +36,18 @@
   
 <br />
 <p align="center">
-  <a href="https://github.com/Federicoand98/AR-Dice">
+  <a href="https://github.com/AndreaCastronovo/MQTTandroidApp">
   </a>
-  <h1 align="center">ARDice</h1>
+  <h1 align="center">MQTTandroidApp</h1>
   <p align="center">
-    ARDice is an augmented reality application that allows you to roll dice. 
+    MQTTandroidApp is android application that monitoring users state and other ambient condition, the acquire data is send at central broker (RaspberryPI3) of the MQTT architecture and then recieved back again an anothers android devices that chose to subscribe at topic.
     <br /> 
     <br />
-    <a href="https://github.com/Federicoand98/AR-Dice/blob/main/ARDice_ARelazione.pdf">In-Depth Document (Italian)</a>
+    <a href="https://github.com/AndreaCastronovo/MQTTandroidApp/blob/main/TesiMQTT%20Andrea%20Castronovo.pdf">In-Depth Document (Italian)</a>
     ·
-    <a href="https://github.com/Federicoand98/AR-Dice/issues">Report Bug</a>
+    <a href="https://github.com/AndreaCastronovo/MQTTandroidApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Federicoand98/AR-Dice/issues">Request Feature</a>
+    <a href="https://github.com/AndreaCastronovo/MQTTandroidApp/issues">Request Feature</a>
   </p>
 </p>
 
@@ -82,55 +82,32 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-**ARDice** is an **augmented reality application** that allows you to roll dice.
+MQTTandroidApp is android application that monitoring users state and other ambient condition, the acquired data is send at central broker (RaspberryPI3) of the MQTT architecture and then recieved back again an anothers android devices that chose to subscribe at topic.
 
-### Game Mode:
-This is the default mode in which the application is started up, in which it is possible to roll the dice very simply. In this mode, the Augmented Reality engine continuously detects surfaces and walls, therefore vertical and horizontal planes, making them interact with the objects in play.
-In Game Mode there are 2 launch modes:
-  1. **Swipe to Throw**: the die is thrown by swiping it, and then the die completes a parabola that starts from the lower part of the smartphone display and arrives in the AR environment
-  2. **Falling Die**: in this mode there will be a pointer on the plane, whose position is given by an estimate of the depth. Pressing the large button at the bottom center will make it fall vertically in proximity to the pointer.
-
-To change launch mode you need to use the button at the top center.
-It is also possible to change the dice to be thrown using the appropriate buttons positioned at the bottom, on the sides of the launch key.
-
-<table style="border: none">
-  <tr>
-    <td>Swipe to throw mode</td>
-    <td>Falling Dice mode</td>
-  </tr>
-  <tr>
-    <td width="20%"><img src="imgs/swipe.gif"/></td>
-    <td width="20%"><img src="imgs/falling.gif"/></td>
-  </tr>
-</table>
-
-### Table Mode:
-The Table Mode is an advanced mode that allows you to build your own horizontal plane at will.
-This mode is accessible by pressing the key at the top right.
-As soon as TableMode is enabled, all automatically constructed plans will be destroyed.
-In this way the user, through a pointer positioned based on an estimate of depth and surfaces,
-He can select the vertices of the surface he wants to build, and once this is done, clicking the button at the bottom center will finalize the currently constructed floor by creating walls around the perimeter.
-It is also possible to move a vertex by simply clicking on it and then it is possible to confirm it by pressing the add vertex button.
-  - **Build:** button to build walls, clickable only if there are at least 3 points
-  - **+:** key to add a vertex
-  - **-:** key to remove a vertex, double tap to confirm
-  - **Trash:** key to delete the newly built surface
-  - **Save:** button to save the newly built floor and return to game mode, if the walls have not been built it is not clickable
+### Data Acquisition :
+App acquires data like Temperature, Heart Beat, Humidity, Position (Latitude & Longitude), Altitude, Pressure and Steps Count.
+There are two type of acquires:
+  1. **Embedded Sensors**: this is default mode, app acquires data from embedded sensors so will be shown the weather conditions and ambient data but which sensors are present depends of model device is used to run application.
+  2. **SoC ESP32 & BME280**: in case of bluetooth is connected with extern circuit app acquires data from it. The extern circuit is implemented with System on Chip (ESP32) constituted by a multiple sensors to acquire users data because this circuit will be implement in a smart shirt; to send data acquired it's used a bluetooth module (BME280) for display data in the App. 
 
 <p align="center">
-<img src="imgs/table.gif" align="center"/>
+  <img src="https://github.com/AndreaCastronovo/MQTTandroidApp/blob/main/Screenshot_20220519-220401_Tesi.jpg" height="600" width="300"
+</p>  
+
+
+### MQTT:
+ MQTT (Message Queue Telemetry Transport) is a lightweight publish-subscribe messaging standard ISO (ISO / IEC PRF 20922) protocol positioned on top of TCP / IP. It is designed for situations where low impact is required and where bandwidth is limited. The publish-subscribe pattern requires a messaging broker. The broker is responsible for distributing messages to recipient clients.
+
+<p align="center">
+<img src="MQTT.jpg" align="center"/>
 </p>
 
-### Presets:
-You can change and save your presets to be used in falling dice mode.
-
-### Themes:
-This settings page can let you modify the colors of your dice. Tap the number to swich from the number to the die color.
+### Data Received and Re-Displayed.
 
 ### Built With
 
-* [Visual Studio Code](https://code.visualstudio.com/download)
-* [Unity](https://unity.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/download) for ssh connection with broker
+* [Android Studio](https://developer.android.com/studio)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -140,17 +117,17 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 * Git
 * Visual Studio
-* Unity
+* Android Studio
 
 ### Installation
 
 1. Install Git at [Download Git](https://git-scm.com/download).
 2. Clone the repo.
    ```sh
-   git clone https://github.com/Federicoand98/AR-Dice
+   git clone https://github.com/AndreaCastronovo/MQTTandroidApp
    ```
-4. Install the latest version of Unity.
-5. Open the directory with Visual Studio.
+4. Install the latest version of AndroidStudio.
+5. Open the directory with AndroidStudio.
 6. Unzip the 7z file in the Resources folder.
 
 
@@ -159,7 +136,7 @@ To get a local copy up and running follow these simple steps.
 ## Usage
 
 To use the application:
-* Switch Unity build platform (iOS, Android)
+* Switch AndroidStudio build platform (Android)
 * Build and Run
 
 
@@ -167,7 +144,7 @@ To use the application:
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/Federicoand98/AR-Dice/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/AndreaCastronovo/MQTTandroidApp/issues) for a list of proposed features (and known issues).
 
 ### Future developments
 
@@ -188,18 +165,16 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](https://github.com/Federicoand98/AR-Dice/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/AndreaCastronovo/MQTTandroidApp/blob/main/LICENSE) for more information.
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Federico Andrucci - federico.andrucci@gmail.com <br>
-Alex Gianelli - djgiane@yahoo.it <br>
-Lorenzo Righi - righi.lo@gmail.com<br>
+Andrea Castronovo - andrea.castronovo98@gmail.com <br>
 
-Project Link: [https://github.com/Federicoand98/AR-Dice](https://github.com/Federicoand98/AR-Dice)
+Project Link: [https://github.com/AndreaCastronovo/MQTTandroidApp](https://github.com/AndreaCastronovo/MQTTandroidApp)
 
 
 
